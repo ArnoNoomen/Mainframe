@@ -1,0 +1,10 @@
+#include <stdio.h>
+int main()
+{
+   FILE *fp;
+   fp = fopen("dd:OUTPUT", "w");
+   fprintf(fp, "Writing to a file with GCCMVS.\n");
+   fprintf(fp, "Writing to a file with GCCMVS.\n");
+   fclose(fp);
+   return 0;
+}

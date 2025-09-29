@@ -1,0 +1,54 @@
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID. COBOL1.
+       ENVIRONMENT DIVISION.
+       CONFIGURATION SECTION.
+       INPUT-OUTPUT SECTION.
+       FILE-CONTROL.
+           SELECT INPUT1
+               ASSIGN TO DA-2314-S-INPUT1.
+           SELECT OUTPUT1
+               ASSIGN TO DA-2314-S-OUTPUT1.
+       DATA DIVISION.
+       FILE SECTION.
+       FD  INPUT1
+           LABEL RECORDS ARE STANDARD
+           BLOCK CONTAINS 0 RECORDS
+           DATA RECORD IS INPUT1-RECORD.
+       01  INPUT1-RECORD.
+           03 FILLER     PIC X(80).
+       FD  OUTPUT1
+           LABEL RECORDS ARE STANDARD
+           BLOCK CONTAINS 0 RECORDS
+           DATA RECORD IS OUTPUT1-RECORD.
+       01  OUTPUT1-RECORD.
+           03 FILLER     PIC X(80).
+       WORKING-STORAGE SECTION.
+       01  REC1.
+           03 FILLER     PIC X(80).
+       01  EOF1          PIC X VALUE 'N'.
+       PROCEDURE DIVISION.
+       1.
+           DISPLAY '13-03-2025a' UPON CONSOLE.
+           OPEN INPUT INPUT1.
+           OPEN OUTPUT OUTPUT1.
+           PERFORM LEES.
+           PERFORM VERWERK
+                   UNTIL EOF1 = 'Y'.
+           CLOSE INPUT1
+           CLOSE OUTPUT1.
+       9.
+           STOP RUN.
+
+       LEES SECTION.
+       1.
+           READ INPUT1 INTO REC1
+             AT END MOVE 'Y' TO EOF1.
+       9.
+           EXIT.
+       VERWERK SECTION.
+       1.
+           DISPLAY REC1.
+           WRITE OUTPUT1-RECORD FROM REC1.
+           PERFORM LEES.
+       9.
+           EXIT.

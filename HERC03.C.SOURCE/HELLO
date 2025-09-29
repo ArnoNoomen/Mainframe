@@ -1,0 +1,7 @@
+#include <stdio.h>
+int main()
+{
+     printf("Joepie hij doet het\n");
+     printf("Joepie hij doet het\n");
+     return 0;
+}
