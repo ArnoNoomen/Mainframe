@@ -1,0 +1,10 @@
+//HERC03L  JOB  CLASS=A,MSGCLASS=X,NOTIFY=HERC03                        00000101
+//EXECGO   EXEC PGM=FILEIO,REGION=5000K                                 00000201
+//STEPLIB  DD   DSN=HERC03.TEST.LOAD,DISP=SHR                           00000303
+//SYSPRINT DD   SYSOUT=*,DCB=(LRECL=132,BLKSIZE=132)                    00000401
+//SYSABEND DD   SYSOUT=*                                                00000501
+//SYSIN    DD   DUMMY                                                   00000601
+//SYSTERM  DD   DUMMY                                                   00000701
+//OUTPUT   DD  DSN=HERC03.TEST.FILEIO,DISP=(MOD,CATLG),                 00000802
+//             SPACE=(CYL,(1,1)),DCB=(RECFM=FB,LRECL=80,BLKSIZE=3120),  00000901
+//             UNIT=SYSDA                                               00001001

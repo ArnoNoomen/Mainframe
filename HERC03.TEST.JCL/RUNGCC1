@@ -1,0 +1,7 @@
+//HERC03L  JOB  CLASS=A,MSGCLASS=X,NOTIFY=HERC03                        00000100
+//EXECGO   EXEC PGM=HELLO,REGION=5000K                                  00000200
+//STEPLIB  DD   DSN=HERC03.TEST.LOAD,DISP=SHR                           00000301
+//SYSPRINT DD   SYSOUT=*,DCB=(LRECL=132,BLKSIZE=132)                    00000400
+//SYSABEND DD   SYSOUT=*                                                00000500
+//SYSIN    DD   DUMMY                                                   00000600
+//SYSTERM  DD   DUMMY                                                   00000700

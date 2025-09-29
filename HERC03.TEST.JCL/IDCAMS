@@ -1,0 +1,7 @@
+//HERC03T  JOB MSGCLASS=H,NOTIFY=HERC03,                                00000101
+//         USER=HERC03,PASSWORD=PASS4U                                  00000200
+//DELETE   EXEC PGM=IDCAMS                                              00000300
+//SYSPRINT DD SYSOUT=A                                                  00000400
+//SYSIN    DD *                                                         00000500
+  DELETE HERC03.TEST.INPUT1                                             00000600
+  DELETE HERC03.TEST.INPUT2                                             00000700

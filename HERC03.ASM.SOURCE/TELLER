@@ -1,0 +1,10 @@
+         START  0
+         USING  *,15
+         LA     3,COUNTER
+         L     2,0(3)
+         A     2,=F'1'
+         ST    2,0(3)
+         WTO   'COUNTER UPDATED'
+         RETURN
+COUNTER  DC    F'0'
+         END

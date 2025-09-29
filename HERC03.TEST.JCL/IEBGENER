@@ -1,0 +1,23 @@
+//HERC03T  JOB MSGCLASS=H,NOTIFY=HERC03,                                00000101
+//         USER=HERC03,PASSWORD=PASS4U                                  00000200
+//STEP02   EXEC PGM=IEBGENER                                            00000300
+//SYSPRINT DD SYSOUT=*                                                  00000400
+//SYSIN    DD DUMMY                                                     00000500
+//SYSUT2   DD DSN=HERC03.TEST.INPUT1,                                   00000600
+//         DCB=(BLKSIZE=27920,LRECL=80,RECFM=FB,DSORG=PS),              00000700
+//         SPACE=(TRK,(100,100),RLSE),                                  00000800
+//         DISP=(NEW,CATLG),                                            00000900
+//         UNIT=SYSDA                                                   00001000
+//SYSUT1   DD *                                                         00001100
+A                                                                       00001200
+B                                                                       00001300
+C                                                                       00001400
+//STEP03   EXEC PGM=IEBGENER                                            00001500
+//SYSPRINT DD SYSOUT=*                                                  00001600
+//SYSIN    DD DUMMY                                                     00001700
+//SYSUT2   DD DSN=HERC03.TEST.INPUT2,                                   00001800
+//         DCB=(BLKSIZE=27920,LRECL=80,RECFM=FB,DSORG=PS),              00001900
+//         SPACE=(TRK,(100,100),RLSE),                                  00002000
+//         DISP=(NEW,CATLG),                                            00002100
+//         UNIT=SYSDA                                                   00002200
+//SYSUT1   DD *                                                         00002300

@@ -1,0 +1,12 @@
+//HERC03T JOB  MSGCLASS=H,NOTIFY=HERC03
+//STEP1   EXEC ASMFCLG
+//SYSIN   DD *
+         PRINT NOGEN
+         START 0
+         BALR  12,0
+         USING *,12
+         WTO   'HELLO1'
+         WTO   'HELLO2'
+         WTO   'HELLO3'
+         BR    14
+         END

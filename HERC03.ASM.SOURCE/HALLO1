@@ -1,0 +1,5 @@
+HALLO START  0
+      USING  *,15
+      WTO    'HALLO, WORLD1'
+      RETURN
+      END

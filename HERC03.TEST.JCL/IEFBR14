@@ -1,0 +1,23 @@
+//HERC03T  JOB MSGCLASS=H,NOTIFY=HERC03,                                00000102
+//         USER=HERC03,PASSWORD=PASS4U                                  00000200
+//STEP01   EXEC PGM=IEFBR14                                             00000300
+//DD1      DD DSN=HERC03.COBOL.SOURCE,                                  00000400
+//         DCB=(BLKSIZE=27920,LRECL=80,RECFM=FB,DSORG=PO),              00000500
+//         SPACE=(TRK,(180,18,180),RLSE),                               00000600
+//         DISP=(,CATLG),                                               00000701
+//         UNIT=SYSDA                                                   00000800
+//DD2      DD DSN=HERC03.COBOL.COPYLIB,                                 00000901
+//         DCB=(BLKSIZE=27920,LRECL=80,RECFM=FB,DSORG=PO),              00001004
+//         SPACE=(TRK,(180,18,180),RLSE),                               00001101
+//         DISP=(,CATLG),                                               00001201
+//         UNIT=SYSDA                                                   00001301
+//DD3      DD DSN=HERC03.COBOL.LISTING,                                 00001401
+//         DCB=(BLKSIZE=27920,LRECL=80,RECFM=FB,DSORG=PO),              00001501
+//         SPACE=(TRK,(180,18,180),RLSE),                               00001601
+//         DISP=(,CATLG),                                               00001701
+//         UNIT=SYSDA                                                   00001801
+//DD4      DD DSN=HERC03.COBOL.LOAD,                                    00001901
+//         DCB=(BLKSIZE=27920,LRECL=80,RECFM=FB,DSORG=PO),              00002001
+//         SPACE=(TRK,(180,18,180),RLSE),                               00002101
+//         DISP=(,CATLG),                                               00002201
+//         UNIT=SYSDA                                                   00002301

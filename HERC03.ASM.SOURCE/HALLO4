@@ -1,0 +1,11 @@
+HELLOWLD CSECT
+         USING HELLOWLD,15
+         LA    1,MSG            LOAD ADDRESS OF MESSAGE
+         WTO   MF=(E,WTOMSG)    WRITE TO OPERATOR
+         BR    14               RETURN TO CALLER
+MSG      DC    C'HELLO WORLD'
+         DC    X'0D25'          NEWLINE (OPTIONAL)
+WTOMSG   DS    0F
+         DC    H'80'            LENGTH OF MESSAGE
+         DC    A(MSG)           ADDRESS OF MESSAGE
+         END   HELLOWLD

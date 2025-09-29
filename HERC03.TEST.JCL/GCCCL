@@ -1,0 +1,7 @@
+//HERC03L JOB CLASS=A,MSGCLASS=H,NOTIFY=HERC03,REGION=8M                00000105
+//GCCCL EXEC GCCCL,                                                     00000207
+//      INFILE='HERC03.C.SOURCE(HELLO)',                                00000308
+//      OUTFILE='HERC03.TEST.LOAD(HELLO)'                               00000409
+//GCCCL EXEC GCCCL,                                                     00000510
+//      INFILE='HERC03.C.SOURCE(FILEIO)',                               00000610
+//      OUTFILE='HERC03.TEST.LOAD(FILEIO)'                              00000710

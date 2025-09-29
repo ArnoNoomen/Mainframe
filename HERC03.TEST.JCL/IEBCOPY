@@ -1,0 +1,11 @@
+//HERC03T  JOB MSGCLASS=H,NOTIFY=HERC03                                 00000179
+//COPY     EXEC PGM=IEBCOPY                                             00000261
+//SYSPRINT DD SYSOUT=A                                                  00000375
+//SYSUT1   DD DISP=SHR,DSNAME=HERC03.ASM.SOURCE                         00000480
+//SYSUT2   DD DSN=HERC03.REXX.SOURCE,                                   00000580
+//         DCB=(BLKSIZE=32720,LRECL=80,RECFM=FB,DSORG=PO),              00000671
+//         SPACE=(TRK,(10,10,10),RLSE),                                 00000771
+//         DISP=(MOD,CATLG),                                            00000871
+//         UNIT=SYSDA                                                   00000971
+//SYSIN    DD *                                                         00001061
+ COPY INDD=((SYSUT1,R)),OUTDD=SYSUT2                                    00001161

@@ -1,0 +1,11 @@
+HELLO    START 0
+         PRINT NOGEN
+         BALR  R12,0
+         USING *,R12
+         WTO   'HELLO WORLD'
+         RETURN
+*
+* REGISTER SYMBOLS
+*
+R12      EQU   12
+         END   HELLO

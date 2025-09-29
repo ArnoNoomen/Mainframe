@@ -1,0 +1,16 @@
+//HERC03T  JOB MSGCLASS=H,NOTIFY=HERC03,USER=HERC03,PASSWORD=PASS4U     00000113
+//STEP01   EXEC PGM=SORT                                                00000200
+//SORTLIB  DD DSN=SYS1.SORTLIB,DISP=SHR                                 00000311
+//SYSOUT   DD SYSOUT=*                                                  00000406
+//SORTIN   DD DSN=HERC03.TEST.INPUT4,DISP=SHR                           00000500
+//SORTOUT  DD DSN=HERC03.TEST.INPUT4A,                                  00000600
+//         DCB=(BLKSIZE=27920,LRECL=80,RECFM=FB,DSORG=PS),              00000708
+//         SPACE=(TRK,(100,100),RLSE),                                  00000801
+//         DISP=(OLD,CATLG),                                            00000905
+//         UNIT=SYSDA                                                   00001001
+//SORTWK01 DD UNIT=3390,SPACE=(CYL,(5,5))                               00001112
+//SORTWK02 DD UNIT=3390,SPACE=(CYL,(5,5))                               00001212
+//SORTWK03 DD UNIT=3390,SPACE=(CYL,(5,5))                               00001312
+//SYSIN    DD *                                                         00001406
+  SORT FIELDS=(1,3,CH,A)                                                00001506
+/*                                                                      00001606
