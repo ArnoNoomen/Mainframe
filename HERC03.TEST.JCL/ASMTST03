@@ -1,0 +1,17 @@
+//HERC03T JOB  MSGCLASS=H,NOTIFY=HERC03
+//STEP1  EXEC ASMFCLG
+//SYSIN  DD *
+         PRINT NOGEN
+         START 0
+         BALR  12,0
+         USING *,12
+         WTO   'TEST'
+         BR    14
+MSG      DC    C'HELLO WORLD'       * TEKSTSTRING
+COUNT    DC    F'10'                * INTEGER IN 4 BYTES
+FLAG     DC    H'1'                 * KLEINERE INTEGER
+HEXVAL   DC    X'FF00'              * HEXADECIMALE WAARDE
+PTR      DC    A(MSG)               * ADRES VAN MSG
+TABLE    DC    F'1',F'2',F'3'
+BUFFER   DC    CL80' '              * 80 LEGE KARAKTERS
+         END

@@ -1,0 +1,43 @@
+//HERC03T JOB  MSGCLASS=H,NOTIFY=HERC03
+//STEP1  EXEC ASMFCLG
+//SYSIN  DD *
+*
+* PROGRAM
+*
+         PRINT NOGEN
+         START 0
+         BALR  12,0
+         USING *,12
+         WTO   'START PROGRAMMA'
+         L     R3,NUM1                LOAD NUM1 IN R3
+         A     R3,NUM2                ADD NUM2 INTO R3
+         ST    R3,RESULT              STORE R3 INTO RESULT
+         MVC   MSG(12),=C'WAARDE = '  KOPIEER PREFIX
+         ED    MSG+9(3),RESULT        FORMATTEER GETAL ALS DECIMAAL
+*        OPEN  (OUTDCB,(OUTPUT))
+*        PUT   OUTDCB,MSG
+*        CLOSE (OUTDCB)
+*        LA    1,MSG
+*        WTO   MF=(E,1)
+         WTO CBUFFER
+         WTO  'EIND PROGRAMMA'
+         BR    14                   RETURN
+*
+* WORKING STORAGE
+*
+RTNCODE  DS    F
+R3       EQU   3
+NUM1     DC    F'100'
+NUM2     DC    F'200'
+RESULT   DC    F'0'
+MSG      DS    CL12
+CBUFFER  DS    CL80              OUTPUT BUFFER
+* UFFER  DCB   DSORG=PS,DDNAME=OUTDD,RECFM=FB,LRECL=80
+         END
+MSGAREA  DC    AL2(MSGEND-MSGAREA)
+         DC    C'PROGRAMMA GESTART OP TK5'
+MSGEND   EQU   *
+WTOAREA DS    0D
+        DC    H'0'             * WTO FLAGS
+        DC    H'MSGEND-MSGTXT' * LENGTE VAN HET BERICHT
+        DC    A(MSG)        * ADRES VAN DE TEKST
