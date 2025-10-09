@@ -1,0 +1,32 @@
+//HERC03T JOB  MSGCLASS=H,NOTIFY=HERC03
+//STEP1  EXEC ASMFCLG
+//SYSIN  DD *
+ARNOASM  CSECT
+         PRINT NOGEN
+         USING ARNOASM,15
+
+SAVEAREA DS    18F              * Standaard savearea
+
+         STM   14,12,12(13)     * Save registers
+         LR    12,15            * Base register
+         USING ARNOASM,12
+
+         LA    13,SAVEAREA      * Setup savearea
+         ST    13,8(,12)
+         ST    12,4(,13)
+
+FIELD1   DS    CL4              * Doelveld
+NAME     DC    'ARNO'           * Constante
+
+         MVC   FIELD1,NAME      * Verplaats 'ARNO' naar FIELD1
+
+* Print FIELD1 via WTO
+         WTO   'FIELD1=',ROUTCDE=11
+         WTO   FIELD1,ROUTCDE=11
+
+         L     13,4(13)         * Restore savearea
+         LM    14,12,12(13)     * Restore registers
+         BR    14               * Return
+
+         END   ARNOASM
+

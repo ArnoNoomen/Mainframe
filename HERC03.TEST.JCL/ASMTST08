@@ -17,6 +17,7 @@ R12      EQU 12
 R13      EQU 13
 R14      EQU 14
 R15      EQU 15
+ONBB     DS    CL5
 ***********************************************************************
 PGM1     CSECT
          SAVE  (14,12)               SLA DE REGISTERS VAN DE AANROEP OP
@@ -27,49 +28,35 @@ PGM1     CSECT
          ST    R13,SAVEAREA+4         WAARDE VAN R13 ADRES SAVEAREA + 4
          LR    R13,R2                   STEL 13 IN OP MIJN SUB-OPROEPEN
 ***********************************************************************
-         WTO   'WELCOME TO ASM LEARNING'
-         LA    R2,EMSG4
+*        MVC   ONBB,=C'12345'
+         MVC   DATA2,DATA1
+         LA    R2,5
+         STH   R2,LEN
+         LA    R2,MYDATA
          WTO   TEXT=(R2)
-         LA    R1,INT1                 R1 KRIJGT HET ADRES VAN INT1
-         LA    R1,1(R1)                Add 1 to R1
-         A     R1,ONE                  Add 1 to R1
-*        LA    R1,-1(R1)               R1 = R1 - 1
-         S     R1,ONE                  R1 = R1 - 1
-         L     R1,INT1                 R1 KRIJGT DE WAARDE VAN INT1
-         L     R2,INT2
-         CR    R1,R2                   COMPARE FULLWORD F
-         BE    EQUAL
-         BL    LESS
-         BH    GREATER
-         B     VERDER
-EQUAL    WTO   'INT1 IS GELIJK AAN INT2'
-         B     VERDER
-GREATER  WTO   'INT1 IS GROTER DAN INT2'
-         B     VERDER
-LESS     WTO   'INT1 IS KLEINDER DAN INT2'
-         B     VERDER
-VERDER   WTO   'VERDER1'
-         WTO   'VERDER2'
 ***********************************************************************
 EINDE    L     R13,SAVEAREA+4           WIJS NAAR HET OUDE OPSLAGGEBIED
          LM    R14,R12,12(R13)          HERSTEL DE REGISTERS
          LA    R15,0                    RETURN CODE = 0
          BR    R14                      TERUG NAAR OPERATING SYSTEM
 ***********************************************************************
-SAVEAREA DS  18F
-EMSG4    DC    AL2(L'EMSG4T)
-EMSG4T   DC    C'UMDIR04 - RTFOUT OPEN FAILED'
-INT0     DC    F'0'
-ONE      DC    F'1'
-INT1     DC    F'10'
-INT2     DC    F'2'
-VAR1     DS    CL11
-VAR1P    DC    AL2(L'VAR1)
-COUNT    DC    F'10'
-MSG      DS    0C
-         DC    C'HELLO OPERATOR!'     ; Define the message text
-WTOMSG   DS    0F                     ; WTO parameter list
-         DC    H'0'                   ; Message flags (0 = default)
-         DC    A(MSG)                 ; Address of the message
-         DC    H'15'                  ; Length of the message
+*
+*   WORKING STORAGE AREA - DYNAMIC
+*
+***********************************************************************
+SAVEAREA DS    18F'0'
+OREC     DS    0CL60      1-60    Master record
+ONBR     DS    CL5        1- 5    Customer nbr
+OLNAME   DS    CL10       6-15    Last name
+OFNAME   DS    CL10      16-25    First name
+OADDR    DS    CL15      26-40    Address
+OCITY    DS    CL10      41-50    City
+OSTATE   DS    CL2       51-52    State
+OZIP     DS    CL5       53-57    Zip
+         DS    CL2       58-59    Unused
+OACD     DS    CL1       60-60    Transaction code (A/C/D)
+DATA1    DC    C'123456'
+MYDATA   DS    0CL80         * Begin van datastructuur
+LEN      DS    AL2           * 2-byte lengteveld
+DATA2    DS    CL78          * 78-byte tekstveld
          END PGM1
