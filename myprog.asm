@@ -7,7 +7,7 @@ MYPROG   CSECT
 *  Point to own save area
          LA    13,SAVE
 **********************************************
-         WTO   'HELLO'
+         WTO   'HALLO'
 **********************************************
 *  Pick up address of calling programs save area
          L     13,SAVE+4
