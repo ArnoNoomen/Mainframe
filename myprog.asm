@@ -3,9 +3,9 @@ MYPROG   CSECT
          LR    12,15          Establish
          USING MYPROG,12         addressability
 *  Save pointer to calling programs registers
-         ST    13,13,SAVE+4
+         ST    13,SAVE+4(13)
 *  Point to own save area
-         LA    13,SAVE
+         LA    R13,SAVE
 **********************************************
          WTO   'HALLO'
 **********************************************
