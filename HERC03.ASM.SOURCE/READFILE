@@ -1,5 +1,5 @@
-         PRINT  ON,NODATA,NOGEN
-         TITLE  'SKELETON ASSEMBLER PROGRAM'
+         PRINT ON,NODATA,NOGEN
+         TITLE 'SKELETON ASSEMBLER PROGRAM'
 READFILE CSECT
 **********************************************************************
 * STANDARD ENTRY LINKAGE
